@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/internal/Observable';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,9 +14,9 @@ export class DataService {
 	sUser:string;
 
   constructor(private _http:HttpClient) {}
-	getUserActionList(params) {
+	getUserActionList(params): Observable<any> {
 		this.sUser=params.given_name+' '+params.family_name;
 
-		return this._http.get('api/users/?user='+this.sUser);
+		return this._http.get('http://conflictminerals.flexisrael.com/api/users/?user='+this.sUser);
 	}
 }

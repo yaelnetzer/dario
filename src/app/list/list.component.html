@@ -1,7 +1,7 @@
 <div class="container">
-	<h1 class="form-heading">Hello!</h1>
+	<h1 class="form-heading">{{ pageHeader }}</h1>
 
-	<button type="submit" class="btn btn-primary" (click)="getUserActionList()">Get List</button>
+	<button *ngIf="show" type="submit" class="btn btn-primary" (click)="getUserActionList()">Get List</button>
 
 		<div class="form-group">
 			<ul class="list-group" *ngFor="let listItem of userList">
@@ -9,5 +9,5 @@
 			</ul>
 		</div>
 
-	<button type="submit" class="btn btn-primary" (click)="logout()">{{ btnTxt }}</button>
+	<button type="submit" class="btn btn-primary" (click)="logout()">Logout</button>
 </div>

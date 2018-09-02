@@ -10,7 +10,8 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-	btnTxt: string = "Logout";
+	pageHeader: string = "Hello!";
+	show: boolean = true;
 
 	userList = [];
 
@@ -26,7 +27,10 @@ export class ListComponent implements OnInit {
 
 	getUserActionList(){
 		this._data.getUserActionList(this._auth.userProfile).subscribe(
-			data => { this.userList = data[0]},
+			data => {
+					this.userList=data;
+					this.show=false;
+					this.pageHeader=this._auth.userProfile.given_name+", here is your list:"},
 			err => console.error(err),
 			() => console.log('done loading user actions list')
 		);
